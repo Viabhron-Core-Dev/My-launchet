@@ -1,0 +1,6 @@
+{
+  "name": "Foundation Launcher",
+  "description": "Minimal high-integrity modular custom launcher for Android 15 Go with active persistent system overlay service.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
