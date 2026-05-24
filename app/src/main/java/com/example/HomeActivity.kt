@@ -8,7 +8,6 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.activity.ComponentActivity
-import androidx.activity.compose.BackHandler
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.ExperimentalFoundationApi
@@ -214,17 +213,10 @@ fun LauncherHomeScreen(
     }
 
     // Configure loop-based infinite scroll centered safely in middle section
-    val pagerState = key(realPageCount > 1) {
-        rememberPagerState(
-            initialPage = if (realPageCount > 1) (1000 * realPageCount) else 0,
-            pageCount = { if (realPageCount > 1) 2000 * realPageCount else 1 }
-        )
-    }
-
-    // Prevent system back navigation from closing or finishing the launcher's main activity
-    BackHandler {
-        // Consumed back press successfully — stays on launcher home screen
-    }
+    val pagerState = rememberPagerState(
+        initialPage = if (realPageCount > 1) (1000 * realPageCount) else 0,
+        pageCount = { if (realPageCount > 1) 2000 * realPageCount else 1 }
+    )
 
     // Layout uses transparent Box to overlay system wallpaper perfectly
     Box(
